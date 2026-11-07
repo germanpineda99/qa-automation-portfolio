@@ -2,8 +2,8 @@
 
 `postman-collection.json` is an independently authored Postman collection for
 the public JSONPlaceholder practice API. It contains executable-looking GET,
-POST, and negative-response examples with local assertions for status codes
-and response shape.
+POST, PUT, DELETE, and negative-response examples with local assertions for
+status codes, response structure, and response content.
 
 ## Use
 

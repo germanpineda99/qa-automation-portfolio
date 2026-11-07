@@ -17,7 +17,7 @@ code, internal artifacts, private URLs, or personal data are included.
 
 ## Quick start
 
-Requirements: Node.js 18 or newer and npm 9 or newer.
+Requirements: Node.js 20 or newer and npm 9 or newer.
 
 ```bash
 npm ci
@@ -38,9 +38,9 @@ are stored in `cypress/fixtures/users.json` and are used through the shared
 ## API examples
 
 Import `api-testing/postman-collection.json` into Postman. The collection uses
-JSONPlaceholder, a public practice API, and includes GET, POST, and negative
-response examples. The collection is executable-looking, but this repository
-does not claim that the requests have been run or passed. See
+JSONPlaceholder, a public practice API, and includes GET, POST, PUT, DELETE,
+and negative response examples. The collection is executable-looking, but this
+repository does not claim that the requests have been run or passed. See
 `api-testing/README.md` for the distinction between authored assertions and
 verified execution.
 

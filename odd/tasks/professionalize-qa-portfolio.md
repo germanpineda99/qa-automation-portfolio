@@ -30,11 +30,11 @@ The repository has a functional Cypress baseline but lacks a verified publicatio
 
 ## Tasks
 
-- [ ] ODD-1: Verify dependencies, Cypress baseline, JSON validity, and repository security surface.
-- [ ] ODD-2: Refactor Cypress tests to consistently use fixtures, custom commands, stable selectors, and independent scenarios.
-- [ ] ODD-3: Add original public API collection/examples and improve fictional SQL and QA documentation.
-- [ ] ODD-4: Create professional README, `.gitignore`, Node metadata, and GitHub Actions workflow; reconcile docs with real results.
-- [ ] ODD-5: Initialize local Git safely, perform final review, and prepare but do not publish until explicit confirmation.
+- [x] ODD-1: Verify dependencies, Cypress baseline, JSON validity, and repository security surface.
+- [x] ODD-2: Refactor Cypress tests to consistently use fixtures, custom commands, stable selectors, and independent scenarios.
+- [x] ODD-3: Add original public API collection/examples and improve fictional SQL and QA documentation.
+- [x] ODD-4: Create professional README, `.gitignore`, Node metadata, and GitHub Actions workflow; reconcile docs with real results.
+- [x] ODD-5: Review the existing local Git state safely and prepare but do not publish until explicit confirmation.
 
 ## Acceptance criteria
 
@@ -55,10 +55,21 @@ The repository has a functional Cypress baseline but lacks a verified publicatio
 
 ## Progress
 
-- Audit completed read-only; no Git metadata exists locally.
-- Security static verdict: no detected confidential material, but final human review remains required because there is no local history to inspect.
-- Next step: implement ODD-1 through ODD-4 in one bounded writer pass, then verify and commit work units.
+- Audit completed read-only; Git metadata was subsequently found and inspected locally.
+- Security static verdict: no detected confidential material; the existing local history contains one initial commit and no inspected sensitive content.
+- ODD-1 through ODD-4 implemented and corrected; ODD-5 final local review completed. Existing `main` tracks `origin/main`; no remote operation was performed.
 
 ## Verification evidence
 
-Pending implementation and clean-install execution.
+Implementation verification completed locally on 2026-11-06:
+
+- `npm ci`: passed after the Cypress upgrade; installed 171 packages.
+- `npm audit --audit-level=moderate`: passed with 0 vulnerabilities after upgrading Cypress to 15.21.1.
+- JSON parsing of repository JSON files excluding `node_modules`: passed for 4 files.
+- `npm run cy:run`: passed in Cypress 15.21.1 with Electron 138; 5/5 tests passed across 3 specs.
+- `npm run cy:run -- --browser chrome`: passed in Chrome 148 headless; 5/5 tests passed across 3 specs.
+- API collection: JSON syntax and GET/POST/PUT/DELETE method coverage validated; requests were not executed, so no API success is claimed.
+- SQL: illustrative only; no database execution is claimed.
+- Security scan: no private-key, cloud-key, token-assignment, or GitLab URL patterns detected in authored files. Demo credentials are public practice-site credentials.
+- GitHub Actions workflow: authored but not executed locally or claimed as passing.
+- GitHub: no authentication check, fetch, repository creation, push, or other remote mutation was performed.
