@@ -61,6 +61,5 @@ claim CI, UI, or API success unless a dated local or CI result is recorded.
 
 ## Scope and safety
 
-This project is intentionally limited to local source and documentation work.
-It does not create or publish a remote repository, access other projects, or
-use former-employer material.
+This is an independent personal portfolio. It does not access other projects
+or use former-employer material.
