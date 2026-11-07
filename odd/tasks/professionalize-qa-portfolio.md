@@ -68,8 +68,10 @@ Implementation verification completed locally on 2026-11-06:
 - JSON parsing of repository JSON files excluding `node_modules`: passed for 4 files.
 - `npm run cy:run`: passed in Cypress 15.21.1 with Electron 138; 5/5 tests passed across 3 specs.
 - `npm run cy:run -- --browser chrome`: passed in Chrome 148 headless; 5/5 tests passed across 3 specs.
+- Final post-commit spot-check `npm run cy:run`: passed 5/5; Cypress emitted a non-blocking existing `allowCypressEnv` migration warning.
 - API collection: JSON syntax and GET/POST/PUT/DELETE method coverage validated; requests were not executed, so no API success is claimed.
 - SQL: illustrative only; no database execution is claimed.
 - Security scan: no private-key, cloud-key, token-assignment, or GitLab URL patterns detected in authored files. Demo credentials are public practice-site credentials.
 - GitHub Actions workflow: authored but not executed locally or claimed as passing.
 - GitHub: no authentication check, fetch, repository creation, push, or other remote mutation was performed.
+- Final tracked-file security scan with `git grep`: no private-key, cloud-key, bearer-token, internal-URL, or GitLab patterns found. `rg` was unavailable in the environment.
