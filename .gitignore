@@ -1,0 +1,17 @@
+node_modules/
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+.nyc_output/
+coverage/
+.cache/
+.npm/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp

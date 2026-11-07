@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "QA Portfolio - JSONPlaceholder Examples",
+    "description": "Original public API examples. Import and execute manually; this repository does not claim execution evidence.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://jsonplaceholder.typicode.com"
+    }
+  ],
+  "item": [
+    {
+      "name": "List posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/posts?_limit=3",
+          "host": ["{{baseUrl}}"],
+          "path": ["posts"],
+          "query": [{"key": "_limit", "value": "3"}]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "pm.test('status is 200', function () { pm.response.to.have.status(200); });",
+            "pm.test('response is an array of posts', function () {",
+            "  const body = pm.response.json();",
+            "  pm.expect(body).to.be.an('array');",
+            "  pm.expect(body.length).to.be.greaterThan(0);",
+            "  pm.expect(body[0]).to.have.all.keys('userId', 'id', 'title', 'body');",
+            "});"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "Create a fictional post",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"QA portfolio example\",\n  \"body\": \"Synthetic request data\",\n  \"userId\": 1\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/posts",
+          "host": ["{{baseUrl}}"],
+          "path": ["posts"]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "pm.test('status is 201', function () { pm.response.to.have.status(201); });",
+            "pm.test('created response echoes the title', function () {",
+            "  pm.expect(pm.response.json().title).to.eql('QA portfolio example');",
+            "});"
+          ]
+        }
+      }]
+    },
+    {
+      "name": "Missing post returns 404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/posts/0",
+          "host": ["{{baseUrl}}"],
+          "path": ["posts", "0"]
+        }
+      },
+      "event": [{
+        "listen": "test",
+        "script": {
+          "type": "text/javascript",
+          "exec": [
+            "pm.test('missing resource returns 404', function () { pm.response.to.have.status(404); });",
+            "pm.test('response is an empty object', function () { pm.expect(pm.response.json()).to.deep.equal({}); });"
+          ]
+        }
+      }]
+    }
+  ]
+}
